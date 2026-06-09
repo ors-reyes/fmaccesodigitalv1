@@ -1,0 +1,80 @@
+:root{
+    --colorBase: 204, 100%;
+  --original: 30%;
+  --brillo: 50%;
+  --base: 5%;
+  --gradientStart1: hsla(var(--colorBase), var(--brillo), 0.6);
+  --gradientEnd1: hsla(var(--colorBase), var(--original), 0.3);
+  --gradientEnd2: hsla(var(--colorBase), 5%, 0.1);
+}
+.bgRed {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  z-index: -2;
+  overflow: hidden;
+  background: hsla(var(--colorBase), var(--base), 1);
+  /* background: hsl(204, 100%, 30%); */
+  /* background: rgb(var(--red), var(--green), var(--blue)); */
+}
+.bgRed::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: -2;
+  top: -50px;
+  background-color: var(--gradientEnd1);
+  background-image:
+    radial-gradient(
+      38% 69% at 50% 0,
+      var(--gradientStart1) 0%,
+      var(--gradientEnd1) 80%
+    ),
+    radial-gradient(
+      10% 10% at 50% 10%,
+      var(--gradientStart1) 0%,
+      var(--gradientEnd2) 100%
+    ),
+    radial-gradient(
+      100% 28% at 100% 10%,
+      var(--gradientStart1) 0%,
+      var(--gradientEnd1) 80%,
+      var(--gradientEnd2) 100%
+    ),
+    radial-gradient(
+      75% 135% at 100% 10%,
+      var(--gradientStart1) 0%,
+      var(--gradientEnd2) 80%
+    );
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(50px);
+}
+.hero{
+    /* top: 0;left: 0; */
+    width: 100%;
+    height: 100svh;
+    padding: 20px;
+    display: grid;
+
+    grid-template:
+      "logoHereo heroAcceso " 80px /
+      80px 1fr
+    ;
+    .logoHereo,.heroAcceso{
+      /* outline: 1px solid grey; */
+    }
+    .logoHereo{
+      grid-area: logoHereo;
+      width: 80px;
+      height: 80px;
+      img{width: 100%;}
+    }
+    .heroAcceso{
+      grid-area: heroAcceso;
+      margin: auto;
+      height: 80px;
+      img{max-width: 120px;object-fit: contain;}
+    }
+}
